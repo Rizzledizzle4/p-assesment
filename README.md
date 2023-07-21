@@ -25,7 +25,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
  
 - Install Active Directory
 - Join Client-1 to the Domain
-- S
+  
 
 <h2>Deployment and Configuration Steps</h2>
 
@@ -53,14 +53,20 @@ Within Server Manager click on "add roles and features"and select Active Directo
 Once installed click on the caution sign to promote DC-1 to a Domain Controller.Setup a new forest with the domain name "mydomain.com."Restart DC-1
 and login as user mydomain.com\labuser.
 
+Within Active Directory create 2 Organizational Units(_EMPLOYEES,_ADMINS)
+
+Within the OU (_ADMINS)create the user Jane Doe with the username jane_admin.Add jane_admin to the "Domain Admins"security group.
+
+Log out of DC-1 and log back in using username "mydomain.com\jane_admin"from now on.
 
 
+![image](https://github.com/Rizzledizzle4/p-assesment/assets/135624545/4b82d03e-e8af-476e-af39-0fcec3bf7bdd)
 
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+In Azure set Client1's DNS settings to the DC-1's Private IP address. Restart Client1 from the Azure Portal.
+
+Log in to Client-1 using Remote Desktop as the original local admin ("labuser"). Join Client1 to the domain and wait for the computer to restart. 
+
+Log in to the Domain Controller using Remote Desktop and verify that Client1 appears in ADUC inside the "Computers" container in the root of the domain.
+
+
